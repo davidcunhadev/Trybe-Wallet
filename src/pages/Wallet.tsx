@@ -1,8 +1,12 @@
 import Header from '../components/Header';
+import WalletForm from '../components/WalletForm';
 
 function Wallet() {
   return (
-    <Header />
+    <section>
+      <Header />
+      <WalletForm />
+    </section>
   );
 }
 
