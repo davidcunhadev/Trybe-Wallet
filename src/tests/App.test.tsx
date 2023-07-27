@@ -1,9 +1,11 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
 import Login from '../pages/Login';
 import App from '../App';
 import Wallet from '../pages/Wallet';
+import mockData from './helpers/mockData';
 
 describe('Testes na tela de login', () => {
   test('Testa se os campos email e senha estão presentes na tela', () => {
@@ -39,9 +41,20 @@ describe('Testes na tela de login', () => {
 });
 
 describe('Testes na tela da carteira', () => {
-  test('Se ao renderizar a página, o valor inicial da despesa seja 0 e que o texto BRL esteja na tela', () => {
-    renderWithRouterAndRedux(<Wallet />);
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
 
+  beforeEach(async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      json: async () => (mockData),
+    });
+
+    renderWithRouterAndRedux(<Wallet />);
+    expect(global.fetch).toBeCalledTimes(1);
+  });
+
+  test('Se ao renderizar a página, o valor inicial da despesa seja 0 e que o texto BRL esteja na tela', () => {
     const expenseValue = screen.getByText(/0\.00/i);
     expect(expenseValue).toBeTruthy();
 
@@ -49,19 +62,21 @@ describe('Testes na tela da carteira', () => {
     expect(brlCurrency).toBeInTheDocument();
   });
 
-  // test('Se ao preencher os campos, o valor do estado é alterado', async () => {
-  //   renderWithRouterAndRedux(<Wallet />);
+  test('Se ao preencher os campos, o valor do estado é alterado', async () => {
+    const user = userEvent.setup();
 
-  //   const user = userEvent.setup();
+    const valueInput = screen.getByRole('textbox', { name: 'Valor:' });
+    const currencySelected = await screen.findByRole('combobox', { name: 'Moeda:' });
+    const methodInput = screen.getByRole('combobox', { name: 'Método de Pagamento:' });
+    const tagInput = screen.getByRole('combobox', { name: 'Tag:' });
+    const descriptionInput = screen.getByRole('textbox', { name: 'Descrição:' });
+    const button = screen.getByRole('button', { name: /adicionar despesas/i });
 
-  //   const valueInput = screen.getByTestId('value-input');
-  //   const selectCurrencyElement = screen.getByTestId('currency-input');
-  //   const currencySelected = screen.getByRole('option', { name: 'USD' });
-  //   const methodInput = screen.getByTestId('method-input');
-  //   const tagInput = screen.getByTestId('tag-input');
-  //   const descriptionInput = screen.getByTestId('description-input');
-
-  //   await user.type(valueInput, '5');
-  //   // await user.selectOptions(selectCurrencyElement, currencySelected);
-  // });
+    await user.type(valueInput, '5');
+    await user.selectOptions(currencySelected, 'USD');
+    await user.selectOptions(methodInput, 'Dinheiro');
+    await user.selectOptions(tagInput, 'Alimentação');
+    await user.type(descriptionInput, 'Comida');
+    await user.click(button);
+  });
 });
