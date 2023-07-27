@@ -1,0 +1,61 @@
+table {
+  align-items: center;
+  background-color: #003be5;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 100vh;
+  padding-top: 30px;
+  width: 100%;
+}
+
+table thead {
+  width: 90%;
+}
+
+table thead tr {
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 4px;
+  width: 100%;
+}
+
+table tbody {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+table tbody tr {
+  border-bottom: 1px solid white;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 36px 0.01px;
+  width: 90%;
+}
+
+td , th {
+  text-align: center;
+  width: 150px;
+}
+
+hr {
+  margin-bottom: -32px;
+  margin-top: -32px;
+  width: 90%;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.buttons-container button {
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+}

@@ -1,0 +1,22 @@
+header {
+  background-color: skyblue;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.logo {
+  height: 52px;
+  width: 250px;
+}
+
+.profile {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.profile p {
+  color: #003be5;
+  font-weight: 700;
+}

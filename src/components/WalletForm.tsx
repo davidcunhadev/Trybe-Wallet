@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import './walletForm.css';
 import { useEffect, useState } from 'react';
 import { Dispatch, FormType, RootState } from '../types';
 import { API_URL, addNewExpense, fetchDataCurrencies } from '../redux/actions';

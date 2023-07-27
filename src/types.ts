@@ -7,7 +7,7 @@ export type UserLogin = {
 
 export type WalletInfos = {
   currencies: [],
-  expenses: [],
+  expenses: ExpenseInfos[],
   editor: boolean,
   idToEdit: number
 };
