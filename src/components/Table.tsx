@@ -6,7 +6,7 @@ function Table() {
   const expenses = useSelector((state: RootState) => state.wallet.expenses);
 
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
           <th>Descrição</th>
@@ -17,7 +17,6 @@ function Table() {
           <th>Câmbio utilizado</th>
           <th>Valor convertido</th>
           <th>Moeda de conversão</th>
-          <th>Editar/Excluir</th>
         </tr>
       </thead>
       <hr />
@@ -35,10 +34,6 @@ function Table() {
           * Number(expense.exchangeRates[expense.currency].ask)).toFixed(2)}
             </td>
             <td>{expense.currency}</td>
-            <td className="buttons-container">
-              <button>Editar</button>
-              <button>Excluir</button>
-            </td>
           </tr>
         ))}
       </tbody>

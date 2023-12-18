@@ -1,32 +1,33 @@
-form {
+.form {
   background-color: rgb(34, 90, 155);
   display: flex;
-  font-size: 18px;
   gap: 22px;
   justify-content: center;
   padding: 30px;
 }
 
-form label {
+.form label {
   color: white;
   margin-right: 6px;
 }
 
-form input {
+.form input {
   border: none;
   border-radius: 4px;
   margin-left: -22px;
   margin-right: 40px;
 }
 
-form select {
+.form select {
   margin-left: -22px;
   margin-right: 40px;
 }
 
-form button {
+.form button {
+  background-color: rgb(105, 172, 105);
   border: none;
   border-radius: 6px;
-  margin-left: 100px;
+  color: white;
+  cursor: pointer;
   padding: 4px;
 }

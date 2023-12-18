@@ -1,3 +1,4 @@
+import './Login.css';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +19,8 @@ function Login() {
     setForm({ ...form, [targetName]: value });
   };
   return (
-    <div>
-      <form>
+    <div className="container">
+      <form className="form-login">
         <label htmlFor="email">Email:</label>
         <input
           data-testid="email-input"
@@ -29,6 +30,7 @@ function Login() {
           onChange={ handleChange }
           value={ email }
           required
+          placeholder="Digite seu email"
         />
         <label htmlFor="senha">Senha:</label>
         <input
@@ -39,17 +41,19 @@ function Login() {
           value={ senha }
           data-testid="password-input"
           required
+          placeholder="Digite sua senha"
+
         />
+        <button
+          disabled={ !email.includes('@') || senha.length < 6 || !email.includes('.com') }
+          onClick={ () => {
+            dispatch(submitUserLogin(form));
+            nav('/carteira');
+          } }
+        >
+          Entrar
+        </button>
       </form>
-      <button
-        disabled={ !email.includes('@') || senha.length < 6 || !email.includes('.com') }
-        onClick={ () => {
-          dispatch(submitUserLogin(form));
-          nav('/carteira');
-        } }
-      >
-        Entrar
-      </button>
     </div>
   );
 }

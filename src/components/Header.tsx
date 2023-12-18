@@ -28,7 +28,7 @@ function Header() {
   }, [expenses]);
 
   return (
-    <header>
+    <header className="header">
       <img className="logo" src={ logo } alt="TrybeWallet Logo" />
       <div className="profile">
         <img src={ emailPhoto } alt="Foto do Perfil" />

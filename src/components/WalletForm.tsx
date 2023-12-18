@@ -50,7 +50,7 @@ function WalletForm() {
     setForm(INITIAL_FORM_STATE);
   };
   return (
-    <form>
+    <form className="form">
       <label htmlFor="value">Valor: </label>
       <input
         onChange={ handleChange }
