@@ -8,8 +8,6 @@ export const ADD_NEW_EXPENSE = 'ADD_NEW_EXPENSE';
 
 export const API_URL = 'https://economia.awesomeapi.com.br/json/all';
 
-// Coloque aqui suas actions
-
 // Action para capturar o email colocado no input da tela da login.
 export const submitUserLogin = (email: UserLogin) => (
   { type: SUBMIT_EMAIL_SUCESS,
