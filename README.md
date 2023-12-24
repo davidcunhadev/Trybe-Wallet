@@ -94,7 +94,7 @@ npm run dev
   <li><h3><strong>Tela da Carteira</strong></h3></li>
   
   <h4>Imagem da tela:</h4>
-  <p>Este será o formulário para o cadastro de um novo serviço.</p>
+  <p>Este será o formulário para o cadastro de uma nova despesa.</p>
   
   ![WalletScreen](/public/WalletScreen.png)
 
